@@ -21,7 +21,10 @@ class App extends Component {
   formSubmit = ({ name, number }) => {
     this.setState(prevState => {
       const { contacts } = prevState;
-      const isContact = contacts.find(contact => contact.name === name);
+      const normalizedName = name.toLowerCase();
+      const isContact = contacts.find(
+        contact => contact.name.toLowerCase() === normalizedName
+      );
 
       if (isContact) {
         alert(`${name} is already in contact`);
